@@ -1,0 +1,26 @@
+[
+  {
+    "id": 101,
+    "name": "Queso Cremoso Punta de Agua",
+    "brand": "Punta de Agua",
+    "categoryId": 5,
+    "price": "Consultar",
+    "image": "assets/punta-agua.jpg"
+  },
+  {
+    "id": 102,
+    "name": "Leche Entera Tregar 1L",
+    "brand": "Tregar",
+    "categoryId": 4,
+    "price": "Consultar",
+    "image": "assets/tregar-leche.jpg"
+  },
+  {
+    "id": 103,
+    "name": "Pan de Molde Bimbo Familiar",
+    "brand": "Bimbo",
+    "categoryId": 6,
+    "price": "Consultar",
+    "image": "assets/bimbo-pan.jpg"
+  }
+]

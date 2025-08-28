@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mayorista — Demo</title>
+    <meta
+      name="description"
+      content="Distribución mayorista. Entregas por zona, marcas líderes y soporte directo."
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <script>
+      async function getJSON(path) {
+        const res = await fetch(path);
+        return res.json();
+      }
+      window.DataAPI = {
+        categories: () => getJSON("./data/categories.json"),
+        products: () => getJSON("./data/products.json"),
+      };
+    </script>
+    <script src="js/app.js" defer></script>
+  </head>
+  <body>
+    <header>
+      <div
+        class="container cluster"
+        style="justify-content: space-between; padding: 14px 0"
+      >
+        <a class="logo" href="./">
+          <img src="assets/logo.svg" alt="" />
+          Mayorista Demo
+        </a>
+        <nav class="cluster">
+          <a href="productos.html" class="btn">Productos</a>
+          <a href="como-comprar.html" class="btn">Cómo comprar</a>
+          <a href="zonas.html" class="btn">Zonas</a>
+          <a href="contacto.html" class="btn">Contacto</a>
+          <a href="productos.html" class="btn primary">Armar pedido</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container stack hero">
+      <h1>Mayorista para autoservicios y almacenes</h1>
+      <h2>
+        Entregas programadas, marcas líderes y soporte directo. Armá tu pedido y
+        te cotizamos hoy.
+      </h2>
+
+      <div class="cluster">
+        <a class="btn primary" href="productos.html">Ver categorías</a>
+        <a class="btn" href="https://wa.me/54911XXXXXXXXX" target="_blank"
+          >WhatsApp</a
+        >
+      </div>
+
+      <!-- Replace "categorías destacadas" section with the dynamic catalog -->
+      <nav id="cat-nav" class="cluster" aria-label="Categorías"></nav>
+      <section id="catalog" class="grid cols-2 cols-3"></section>
+    </main>
+
+    <footer>
+      <div class="container">
+        © 2025 BuenoStudio Todos los derechos reservados.
+      </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+
+    <script>
+      async function getJSON(path) {
+        const res = await fetch(path);
+        return res.json();
+      }
+
+      window.DataAPI = {
+        categories: () => getJSON("./data/categories.json"),
+        products: () => getJSON("./data/products.json"),
+      };
+    </script>
+  </body>
+</html>
