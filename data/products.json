@@ -1,62 +1,56 @@
 [
   {
-    "id": "pan-bimbo-doble-fibra",
+    "id": 1,
     "name": "Pan Bimbo Doble Fibra 500g",
     "brand": "Bimbo",
-    "brandLogo": "assets/brands/bimbo.svg",
-    "category": "panificados",
+    "size": "500 g",
     "price": 2500,
-    "unit": "500 g",
-    "image": "assets/products/pan-bimbo-doble-fibra.jpg",
-    "tags": ["integral", "fibra"]
+    "category": "panificados",
+    "image": "assets/panificados.jpg"
   },
   {
-    "id": "leche-tregar-entera-1l",
+    "id": 2,
     "name": "Leche Tregar Entera 1L",
     "brand": "Tregar",
-    "brandLogo": "assets/brands/tregar.svg",
-    "category": "lacteos",
+    "size": "1 L",
     "price": 1800,
-    "unit": "1 L",
-    "image": "assets/products/leche-tregar-entera-1l.jpg",
-    "tags": ["leche"]
+    "category": "lacteos",
+    "image": "assets/lacteos.jpg"
   },
   {
-    "id": "agua-punta-de-agua-2l",
-    "name": "Agua Punta de Agua 2L",
-    "brand": "Punta de Agua",
-    "brandLogo": "assets/brands/punta-de-agua.svg",
-    "category": "bebidas",
+    "id": 3,
+    "name": "Agua Vital 2L",
+    "brand": "Vital",
+    "size": "2 L",
     "price": 1200,
-    "unit": "2 L",
-    "image": "assets/products/agua-punta-de-agua-2l.jpg",
-    "tags": ["agua"]
+    "category": "bebidas",
+    "image": "assets/bebidas.png"
   },
   {
-    "id": "snacks-galletitas-chocolate-118g",
+    "id": 4,
     "name": "Galletitas de Chocolate 118g",
     "brand": "Snacky",
-    "category": "snacks",
+    "size": "118 g",
     "price": 950,
-    "unit": "118 g",
-    "image": ""
+    "category": "snacks",
+    "image": "assets/snacks.jpg"
   },
   {
-    "id": "congelados-papas-1kg",
+    "id": 5,
     "name": "Papas Fritas Congeladas 1Kg",
     "brand": "Frost",
+    "size": "1 kg",
+    "price": 2200,
     "category": "congelados",
-    "price": 3200,
-    "unit": "1 kg",
-    "image": ""
+    "image": "assets/congelados.png"
   },
   {
-    "id": "limpieza-detergente-500ml",
+    "id": 6,
     "name": "Detergente Líquido 500ml",
     "brand": "Brillo",
+    "size": "500 ml",
+    "price": 1100,
     "category": "limpieza",
-    "price": 1400,
-    "unit": "500 ml",
-    "image": ""
+    "image": "assets/limpieza.png"
   }
 ]
