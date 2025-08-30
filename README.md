@@ -27,4 +27,3 @@ The demo allows users to browse products by category, view details on product ca
 - **JSON** (dynamic categories & products)  
 
 ---
-
