@@ -1,26 +1,62 @@
 [
   {
-    "id": 101,
-    "name": "Queso Cremoso Punta de Agua",
-    "brand": "Punta de Agua",
-    "categoryId": 5,
-    "price": "Consultar",
-    "image": "assets/punta-agua.jpg"
-  },
-  {
-    "id": 102,
-    "name": "Leche Entera Tregar 1L",
-    "brand": "Tregar",
-    "categoryId": 4,
-    "price": "Consultar",
-    "image": "assets/tregar-leche.jpg"
-  },
-  {
-    "id": 103,
-    "name": "Pan de Molde Bimbo Familiar",
+    "id": "pan-bimbo-doble-fibra",
+    "name": "Pan Bimbo Doble Fibra 500g",
     "brand": "Bimbo",
-    "categoryId": 6,
-    "price": "Consultar",
-    "image": "assets/bimbo-pan.jpg"
+    "brandLogo": "assets/brands/bimbo.svg",
+    "category": "panificados",
+    "price": 2500,
+    "unit": "500 g",
+    "image": "assets/products/pan-bimbo-doble-fibra.jpg",
+    "tags": ["integral", "fibra"]
+  },
+  {
+    "id": "leche-tregar-entera-1l",
+    "name": "Leche Tregar Entera 1L",
+    "brand": "Tregar",
+    "brandLogo": "assets/brands/tregar.svg",
+    "category": "lacteos",
+    "price": 1800,
+    "unit": "1 L",
+    "image": "assets/products/leche-tregar-entera-1l.jpg",
+    "tags": ["leche"]
+  },
+  {
+    "id": "agua-punta-de-agua-2l",
+    "name": "Agua Punta de Agua 2L",
+    "brand": "Punta de Agua",
+    "brandLogo": "assets/brands/punta-de-agua.svg",
+    "category": "bebidas",
+    "price": 1200,
+    "unit": "2 L",
+    "image": "assets/products/agua-punta-de-agua-2l.jpg",
+    "tags": ["agua"]
+  },
+  {
+    "id": "snacks-galletitas-chocolate-118g",
+    "name": "Galletitas de Chocolate 118g",
+    "brand": "Snacky",
+    "category": "snacks",
+    "price": 950,
+    "unit": "118 g",
+    "image": ""
+  },
+  {
+    "id": "congelados-papas-1kg",
+    "name": "Papas Fritas Congeladas 1Kg",
+    "brand": "Frost",
+    "category": "congelados",
+    "price": 3200,
+    "unit": "1 kg",
+    "image": ""
+  },
+  {
+    "id": "limpieza-detergente-500ml",
+    "name": "Detergente Líquido 500ml",
+    "brand": "Brillo",
+    "category": "limpieza",
+    "price": 1400,
+    "unit": "500 ml",
+    "image": ""
   }
 ]

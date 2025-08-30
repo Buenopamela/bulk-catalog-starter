@@ -1,5 +1,8 @@
-@import url("./tokens.css");
+/* styles.css — cleaned */
 
+/* NOTE: tokens.css is linked from HTML <head>. Remove any @import here to avoid duplication. */
+
+/* ===== Base ===== */
 body {
   margin: 0;
   background: var(--bg);
@@ -9,6 +12,8 @@ body {
 a {
   color: inherit;
 }
+
+/* Nav / header */
 nav a {
   opacity: 0.85;
   text-decoration: none;
@@ -16,6 +21,7 @@ nav a {
 nav a:hover {
   opacity: 1;
 }
+
 .logo {
   display: flex;
   align-items: center;
@@ -27,9 +33,30 @@ nav a:hover {
   height: 34px;
 }
 
+/* Header breathing space */
+.site-header {
+  padding: 12px 0;
+} /* top/bottom padding for the sticky header line */
+.site-header .container {
+  align-items: center;
+}
+
+/* Logo size (slightly bigger for clarity) */
+.logo img {
+  width: 40px;
+  height: 40px;
+}
+
+/* CTA button vertical balance in header */
+.site-header .btn {
+  margin-top: 4px;
+} /* subtle nudge down so it doesn't hug the top */
+
+/* Hero & headings */
 .hero {
   padding: 64px 0;
 }
+
 h1 {
   font-size: clamp(2rem, 4.5vw, 3.2rem);
   line-height: 1.05;
@@ -39,68 +66,6 @@ h2 {
   font-size: 1.4rem;
   margin: 0.2rem 0 1rem;
   color: var(--muted);
-}
-
-.card.product {
-  overflow: hidden;
-}
-.card.product img {
-  width: 100%;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  border-bottom: 1px solid var(--line);
-}
-.card.product .body {
-  padding: 14px;
-}
-.card.product h3 {
-  margin: 0.2rem 0 0.2rem;
-  font-size: 1rem;
-}
-
-/* fallback background for missing product images */
-.card img {
-  background: #2a2a2a;
-  object-fit: cover;
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.meta {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
-
-.filters {
-  position: sticky;
-  top: 64px;
-  padding: 12px;
-  background: linear-gradient(180deg, #0f1115, #0f1115f0);
-  border-bottom: 1px solid var(--line);
-  z-index: 5;
-}
-
-.cart-bar {
-  position: sticky;
-  bottom: 0;
-  background: #0d1116f6;
-  border-top: 1px solid var(--line);
-  padding: 10px;
-  z-index: 20;
-}
-.cart-panel {
-  position: fixed;
-  right: 16px;
-  bottom: 80px;
-  max-width: 360px;
-  width: 92vw;
-}
-.cart-panel .card {
-  padding: 14px;
 }
 
 /* ===== Catalog layout ===== */
@@ -121,23 +86,26 @@ h2 {
 }
 
 .card img {
+  display: block;
   width: 100%;
-  height: 160px;
+  height: 160px; /* unified, steady card height */
   object-fit: cover;
   border-radius: 12px;
-  background: var(--surface-1, #111216);
+  background: var(--surface-1, #111216); /* fallback bg tone */
 }
 
 .card h4 {
   margin: 10px 0 4px;
   font-size: 1.05rem;
 }
-.card .meta {
-  color: var(--text-2, #a9adb3);
-  font-size: 0.93rem;
+
+.meta {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
+  color: var(--text-2, #a9adb3);
+  font-size: 0.93rem;
 }
 
 .card .actions {
@@ -152,9 +120,17 @@ h2 {
   background: transparent;
 }
 .card .btn.primary {
-  background: var(--brand-3, #57b4f7); /* #57b4f7 */
+  background: var(--brand-3, #57b4f7);
   color: #0b0d0f;
-  border-color: var(--brand-3, #57b4f7); /*#6ee7c8 */
+  border-color: var(--brand-3, #57b4f7);
+}
+
+/* Optional: brand logo inside card */
+.card .brand {
+  width: 56px;
+  height: 24px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.25));
 }
 
 /* ===== Category nav pills ===== */
@@ -176,14 +152,36 @@ h2 {
   border-color: var(--brand-3, #57b4f7);
 }
 
-/* Optional: brand logo inside card */
-.card .brand {
-  width: 56px;
-  height: 24px;
-  object-fit: contain;
-  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.25));
+/* ===== Optional UI (not used yet) ===== */
+/* Keep if you'll add sticky filters or cart; otherwise you can remove. */
+.filters {
+  position: sticky;
+  top: 64px;
+  padding: 12px;
+  background: linear-gradient(180deg, #0f1115, #0f1115f0);
+  border-bottom: 1px solid var(--line);
+  z-index: 5;
+}
+.cart-bar {
+  position: sticky;
+  bottom: 0;
+  background: #0d1116f6;
+  border-top: 1px solid var(--line);
+  padding: 10px;
+  z-index: 20;
+}
+.cart-panel {
+  position: fixed;
+  right: 16px;
+  bottom: 80px;
+  max-width: 360px;
+  width: 92vw;
+}
+.cart-panel .card {
+  padding: 14px;
 }
 
+/* Footer */
 footer {
   margin-top: 72px;
   padding: 44px 0;

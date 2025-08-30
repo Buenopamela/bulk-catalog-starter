@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mayorista Demo — Productos</title>
+    <meta
+      name="description"
+      content="Catálogo completo de productos mayoristas por categorías."
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Favicon (served from ./assets/) -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=4" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/favicon-32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="assets/favicon-16.png"
+    />
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon" />
+
+    <!-- Scripts -->
+    <script src="js/data-api.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container cluster">
+        <a class="logo" href="./">
+          <img src="assets/logo.svg" alt="Mayorista Demo" />
+          <span>Mayorista Demo</span>
+        </a>
+
+        <nav class="site-nav">
+          <a href="./" class="nav-link">Inicio</a>
+          <a href="productos.html" class="nav-link is-active">Productos</a>
+          <a href="#contacto" class="nav-link">Contacto</a>
+        </nav>
+
+        <a class="btn primary" href="productos.html">Hacer pedido</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container stack">
+          <h1>Todos los productos</h1>
+          <p class="muted">
+            Explorá nuestro catálogo mayorista completo. Filtra por categoría y
+            consultá stock en WhatsApp.
+          </p>
+        </div>
+      </section>
+
+      <!-- Dynamic category pills -->
+      <section class="container">
+        <div id="cat-nav" class="pill-bar" aria-label="Categorías"></div>
+      </section>
+
+      <!-- Product grid -->
+      <section class="container">
+        <div id="catalog" class="product-grid" aria-live="polite">
+          <noscript>Activa JavaScript para ver el catálogo.</noscript>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contacto">
+      <div class="container cluster">
+        <p>&copy; <span id="year"></span> Mayorista Demo</p>
+        <div class="cluster">
+          <a class="link" href="./">Inicio</a>
+          <a class="link" href="#">Términos</a>
+          <a class="link" href="#">Privacidad</a>
+        </div>
+      </div>
+      <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+      </script>
+    </footer>
+  </body>
+</html>

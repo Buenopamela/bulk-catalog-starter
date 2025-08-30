@@ -1,44 +1,19 @@
 [
   {
-    "id": 1,
-    "slug": "aceites",
-    "name": "Aceites",
-    "rubro": "Almacén",
-    "order": 1
-  },
-  {
-    "id": 2,
-    "slug": "gaseosas",
-    "name": "Gaseosas",
-    "rubro": "Bebidas",
-    "order": 2
-  },
-  {
-    "id": 3,
-    "slug": "lavanderia",
-    "name": "Lavandería",
-    "rubro": "Limpieza",
-    "order": 3
-  },
-  {
-    "id": 4,
-    "slug": "lacteos",
-    "name": "Lácteos",
-    "rubro": "Lácteos",
-    "order": 4
-  },
-  {
-    "id": 5,
-    "slug": "quesos",
-    "name": "Quesos",
-    "rubro": "Lácteos",
-    "order": 5
-  },
-  {
-    "id": 6,
-    "slug": "panificados",
+    "id": "panificados",
     "name": "Panificados",
-    "rubro": "Almacén",
-    "order": 6
-  }
+    "slug": "panificados",
+    "icon": "🍞"
+  },
+  { "id": "lacteos", "name": "Lácteos", "slug": "lacteos", "icon": "🥛" },
+  { "id": "bebidas", "name": "Bebidas", "slug": "bebidas", "icon": "🧃" },
+  { "id": "snacks", "name": "Snacks", "slug": "snacks", "icon": "🍪" },
+  {
+    "id": "congelados",
+    "name": "Congelados",
+    "slug": "congelados",
+    "icon": "🧊"
+  },
+  { "id": "limpieza", "name": "Limpieza", "slug": "limpieza", "icon": "🧼" },
+  { "id": "otros", "name": "Otros", "slug": "otros", "icon": "🛒" }
 ]
