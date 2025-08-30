@@ -1,3 +1,4 @@
+// ---- Safe DOM lookups ----
 const catNav = document.getElementById("cat-nav");
 const catalog = document.getElementById("catalog");
 const HAS_CATALOG = !!(catNav && catalog);
@@ -5,19 +6,20 @@ const HAS_CATALOG = !!(catNav && catalog);
 // ---- State ----
 let ALL_CATS = [];
 let ALL_PRODS = [];
-const state = { cat: "all" }; // 'all' | categoryId | categorySlug
+const state = { cat: "all" };
 
 // ---- Config ----
-const WHATSAPP = { phone: "5491163581814" }; // ← set your phone once here
-// Built-in SVG placeholder so we don't depend on a file being present
+const WHATSAPP = { phone: "5491163581814" }; // set your number here
+
+// Placeholder (only if neither product nor category has image)
 const PLACEHOLDER_IMG =
   "data:image/svg+xml;utf8," +
   encodeURIComponent(
-    `<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'>
+    `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'>
       <rect width='100%' height='100%' fill='#111216'/>
       <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
             fill='#333' font-family='system-ui, -apple-system, Segoe UI, Roboto'
-            font-size='22'>Imagen no disponible</text>
+            font-size='28'>Imagen no disponible</text>
     </svg>`
   );
 
@@ -34,11 +36,18 @@ function fmtPrice(n) {
   return typeof n === "number" ? `$${n.toLocaleString("es-AR")}` : "";
 }
 
-// ---- Renderers ----
+// ---- Category lookups ----
+let CAT_BY_SLUG = {};
+let CAT_BY_ID = {};
+function buildCatIndexes(cats) {
+  CAT_BY_SLUG = Object.fromEntries(cats.map((c) => [String(c.slug), c]));
+  CAT_BY_ID = Object.fromEntries(cats.map((c) => [String(c.id), c]));
+}
+
+/* ---------- NAV: text-only pills ---------- */
 function renderNav(cats) {
   if (!HAS_CATALOG) return;
-  // No icons in pills — just names
-  const pills = [{ slug: "all", name: "Todos" }, ...cats]
+  const list = [{ slug: "all", name: "Todos" }, ...cats]
     .map((c) => {
       const active =
         (state.cat === "all" && c.slug === "all") ||
@@ -51,9 +60,19 @@ function renderNav(cats) {
       </button>`;
     })
     .join("");
-  catNav.innerHTML = pills;
+  catNav.innerHTML = list;
 }
 
+/* ---------- Choose image: product → category → placeholder ---------- */
+function imgForProduct(p) {
+  if (p.image && p.image.trim()) return p.image;
+  const cat =
+    (p.category && CAT_BY_SLUG[String(p.category)]) ||
+    (p.categoryId != null && CAT_BY_ID[String(p.categoryId)]);
+  return (cat && cat.image) || PLACEHOLDER_IMG;
+}
+
+/* ---------- PRODUCTS (uses .media wrapper for clean sizing) ---------- */
 function renderProducts(list) {
   if (!HAS_CATALOG) return;
 
@@ -68,18 +87,26 @@ function renderProducts(list) {
 
   catalog.innerHTML = filtered
     .map((p) => {
-      const imgSrc = p.image && p.image.trim() ? p.image : PLACEHOLDER_IMG;
+      const prodImg = imgForProduct(p);
+      const catObj =
+        (p.category && CAT_BY_SLUG[String(p.category)]) ||
+        (p.categoryId != null && CAT_BY_ID[String(p.categoryId)]);
+      const catImg = (catObj && catObj.image) || PLACEHOLDER_IMG;
+
       const unit = p.unit ? `<small class="meta">${p.unit}</small>` : "";
       const price = fmtPrice(p.price);
 
       return `
         <article class="card">
-          <img
-            src="${imgSrc}"
-            alt="${p.name}"
-            loading="lazy"
-            onerror="this.onerror=null; this.src='${PLACEHOLDER_IMG}'; this.alt='';"
-          />
+          <div class="media">
+            <img
+              src="${prodImg}"
+              alt="${p.name}"
+              loading="lazy"
+              data-catsrc="${catImg}"
+              onerror="this.onerror=null; this.src=this.dataset.catsrc || '${PLACEHOLDER_IMG}';"
+            />
+          </div>
           <h4>${p.name}</h4>
           <p class="meta">${p.brand || ""}</p>
           ${unit}
@@ -99,7 +126,7 @@ function renderProducts(list) {
   }
 }
 
-// ---- Events ----
+/* ---------- Events ---------- */
 if (HAS_CATALOG) {
   catNav.addEventListener("click", (e) => {
     const btn = e.target.closest("button[data-cat]");
@@ -108,35 +135,32 @@ if (HAS_CATALOG) {
     const id = btn.dataset.id;
     state.cat = slug === "all" ? "all" : id || slug;
 
-    // Active pill
     [...catNav.querySelectorAll(".btn")].forEach((b) =>
       b.classList.toggle("is-active", b === btn)
     );
 
     renderProducts(ALL_PRODS);
-    // Persist deep-link
     location.hash = `#cat=${slug}`;
-    // UX: scroll to products on mobile
     catalog.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 }
 
-// ---- Boot ----
+/* ---------- Boot ---------- */
 (async () => {
   try {
-    // Read deep-link (#cat=slug)
     const fromHash = new URLSearchParams(location.hash.replace("#", "")).get(
       "cat"
     );
     if (fromHash) state.cat = fromHash;
 
-    // Data loader from data-api.js; fallback to direct fetch if not present
     const DataAPI = window.DataAPI || {
       categories: () => fetch("data/categories.json").then((r) => r.json()),
       products: () => fetch("data/products.json").then((r) => r.json()),
     };
 
     ALL_CATS = await DataAPI.categories();
+    buildCatIndexes(ALL_CATS);
+
     ALL_PRODS = await DataAPI.products();
 
     if (HAS_CATALOG) {

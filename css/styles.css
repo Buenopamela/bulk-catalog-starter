@@ -1,190 +1,183 @@
-/* styles.css — cleaned */
-
-/* NOTE: tokens.css is linked from HTML <head>. Remove any @import here to avoid duplication. */
-
-/* ===== Base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font: 16px/1.45 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ========== Links ========== */
 a {
   color: inherit;
-}
-
-/* Nav / header */
-nav a {
-  opacity: 0.85;
   text-decoration: none;
 }
-nav a:hover {
-  opacity: 1;
+a.link {
+  color: var(--muted);
+}
+a.link:hover {
+  color: var(--text);
 }
 
-.logo {
+/* ========== Layout helpers ========== */
+section {
+  padding-block: var(--space-6, 48px);
+}
+
+/* ========== Header ========== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: linear-gradient(180deg, #0f1115, #0f1115cc 60%, transparent);
+  backdrop-filter: saturate(1.2) blur(6px);
+  border-bottom: 1px solid var(--line);
+  padding-block: 12px;
+}
+.site-header .container {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: var(--space-4);
+}
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-weight: 800;
 }
-.logo img {
-  width: 34px;
-  height: 34px;
-}
-
-/* Header breathing space */
-.site-header {
-  padding: 12px 0;
-} /* top/bottom padding for the sticky header line */
-.site-header .container {
-  align-items: center;
-}
-
-/* Logo size (slightly bigger for clarity) */
 .logo img {
   width: 40px;
   height: 40px;
 }
-
-/* CTA button vertical balance in header */
+.site-nav {
+  display: flex;
+  gap: var(--space-3);
+  margin-left: auto;
+}
+.site-nav .nav-link {
+  color: var(--muted);
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+.site-nav .nav-link:is(:hover, .is-active) {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.04);
+}
+/* CTA nudge */
 .site-header .btn {
-  margin-top: 4px;
-} /* subtle nudge down so it doesn't hug the top */
-
-/* Hero & headings */
-.hero {
-  padding: 64px 0;
+  margin-top: 2px;
 }
 
-h1 {
-  font-size: clamp(2rem, 4.5vw, 3.2rem);
-  line-height: 1.05;
-  margin: 0 0 1rem;
+/* ========== Hero ========== */
+.hero h1 {
+  font-size: clamp(2rem, 3vw + 1rem, 3rem);
+  margin: 0;
 }
-h2 {
-  font-size: 1.4rem;
-  margin: 0.2rem 0 1rem;
+.muted {
   color: var(--muted);
 }
 
-/* ===== Catalog layout ===== */
-#catalog {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: var(--space-4, 16px);
-  margin-block: var(--space-6, 24px);
-}
-
-/* ===== Product card ===== */
-.card {
-  padding: 16px;
-  border-radius: 16px;
-  background: var(--surface-2, #242323);
-  border: 1px solid var(--border, #26272b);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
-}
-
-.card img {
-  display: block;
-  width: 100%;
-  height: 160px; /* unified, steady card height */
-  object-fit: cover;
-  border-radius: 12px;
-  background: var(--surface-1, #111216); /* fallback bg tone */
-}
-
-.card h4 {
-  margin: 10px 0 4px;
-  font-size: 1.05rem;
-}
-
-.meta {
+/* ========== Category pills (TEXT ONLY) ========== */
+.pill-bar {
   display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
   align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  color: var(--text-2, #a9adb3);
-  font-size: 0.93rem;
-}
-
-.card .actions {
-  margin-top: 10px;
-  display: flex;
-  gap: 8px;
-}
-.card .btn {
-  padding: 8px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--border, #26272b);
-  background: transparent;
-}
-.card .btn.primary {
-  background: var(--brand-3, #57b4f7);
-  color: #0b0d0f;
-  border-color: var(--brand-3, #57b4f7);
-}
-
-/* Optional: brand logo inside card */
-.card .brand {
-  width: 56px;
-  height: 24px;
-  object-fit: contain;
-  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.25));
-}
-
-/* ===== Category nav pills ===== */
-#cat-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-block: 16px 8px;
 }
 #cat-nav .btn {
-  padding: 8px 14px;
+  border: 1px solid var(--line);
   border-radius: 999px;
-  background: var(--surface-2, #15161a);
-  border: 1px solid var(--border, #26272b);
+  padding: 10px 18px;
+  background: transparent;
+  color: var(--text);
+  font-weight: 700;
 }
 #cat-nav .btn.is-active {
-  background: var(--brand-3, #57b4f7);
-  color: #0b0d0f;
-  border-color: var(--brand-3, #57b4f7);
+  background: var(--brand);
+  color: var(--brand-ink);
+  border-color: var(--brand);
 }
 
-/* ===== Optional UI (not used yet) ===== */
-/* Keep if you'll add sticky filters or cart; otherwise you can remove. */
-.filters {
-  position: sticky;
-  top: 64px;
-  padding: 12px;
-  background: linear-gradient(180deg, #0f1115, #0f1115f0);
-  border-bottom: 1px solid var(--line);
-  z-index: 5;
+/* ========== Product grid & cards ========== */
+.product-grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
-.cart-bar {
-  position: sticky;
-  bottom: 0;
-  background: #0d1116f6;
-  border-top: 1px solid var(--line);
-  padding: 10px;
-  z-index: 20;
-}
-.cart-panel {
-  position: fixed;
-  right: 16px;
-  bottom: 80px;
-  max-width: 360px;
-  width: 92vw;
-}
-.cart-panel .card {
-  padding: 14px;
+.card {
+  padding: var(--space-4);
+  border-radius: var(--radius);
 }
 
-/* Footer */
-footer {
-  margin-top: 72px;
-  padding: 44px 0;
-  border-top: 1px solid var(--line);
+/* Tidy media box (consistent size; show full pack without cropping) */
+.card .media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3; /* use 16 / 9 if you prefer wider */
+  border-radius: 12px;
+  overflow: hidden;
+  background: #0f1115;
+  margin-bottom: 12px;
+}
+.card .media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* prevent cropping of product packs */
+  background: #fff; /* clean background for transparent PNGs */
+}
+
+/* Card text */
+.card h4 {
+  margin: 0 0 6px 0;
+  font-size: 1.15rem;
+}
+.card .meta {
   color: var(--muted);
+  margin: 0 0 8px 0;
+}
+
+/* Card actions */
+.card .actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+/* ========== Footer ========== */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding-block: var(--space-5);
+  color: var(--muted);
+}
+.site-footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+/* ========== Small screens ========== */
+@media (max-width: 480px) {
+  .site-nav {
+    display: none;
+  } /* simple mobile header */
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
 }

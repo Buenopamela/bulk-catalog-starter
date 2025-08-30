@@ -3,17 +3,36 @@
     "id": "panificados",
     "name": "Panificados",
     "slug": "panificados",
-    "icon": "🍞"
+    "image": "assets/panificados.jpg"
   },
-  { "id": "lacteos", "name": "Lácteos", "slug": "lacteos", "icon": "🥛" },
-  { "id": "bebidas", "name": "Bebidas", "slug": "bebidas", "icon": "🧃" },
-  { "id": "snacks", "name": "Snacks", "slug": "snacks", "icon": "🍪" },
+  {
+    "id": "lacteos",
+    "name": "Lácteos",
+    "slug": "lacteos",
+    "image": "assets/lacteos.jpg"
+  },
+  {
+    "id": "bebidas",
+    "name": "Bebidas",
+    "slug": "bebidas",
+    "image": "assets/bebidas.png"
+  },
+  {
+    "id": "snacks",
+    "name": "Snacks",
+    "slug": "snacks",
+    "image": "assets/snacks.jpg"
+  },
   {
     "id": "congelados",
     "name": "Congelados",
     "slug": "congelados",
-    "icon": "🧊"
+    "image": "assets/congelados.png"
   },
-  { "id": "limpieza", "name": "Limpieza", "slug": "limpieza", "icon": "🧼" },
-  { "id": "otros", "name": "Otros", "slug": "otros", "icon": "🛒" }
+  {
+    "id": "limpieza",
+    "name": "Limpieza",
+    "slug": "limpieza",
+    "image": "assets/limpieza.png"
+  }
 ]
